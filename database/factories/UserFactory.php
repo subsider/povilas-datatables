@@ -27,3 +27,11 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->state(User::class, 'random_date', function (Faker $faker) {
+    $date = $faker->dateTimeBetween('-5 years', now());
+    return [
+        'created_at' => $date,
+        'updated_at' => $date,
+    ];
+});
