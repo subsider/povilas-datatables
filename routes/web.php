@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $users = \App\User::all();
+
+    return view('welcome', compact('users'));
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
